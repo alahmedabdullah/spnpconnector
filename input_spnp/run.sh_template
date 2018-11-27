@@ -1,0 +1,18 @@
+#!/bin/sh
+
+INPUT_DIR=$1
+OUTPUT_DIR=$2
+SPNP_HOME=$3
+SPNP_BIN=$4
+RUN_DIR=`pwd`
+
+
+cd $SPNP_HOME
+
+source ./spnpinit.bash; cd $RUN_DIR/$INPUT_DIR; $SPNP_BIN {{model_name}} &> runlog.txt
+
+
+cp ./*.txt ../$OUTPUT_DIR
+cp ./{{model_name}}.* ../$OUTPUT_DIR
+
+# --- EOF ---
